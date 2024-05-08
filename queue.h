@@ -11,7 +11,7 @@ typedef struct {
     Process *arr[MAX_PROCESSES];
     int front, rear;
 } Queue;
-
+//test
 void initQueue(Queue *q);
 int isEmpty(Queue *q);
 void enqueue(Queue *q, Process *p);

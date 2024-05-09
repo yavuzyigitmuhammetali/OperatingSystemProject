@@ -4,40 +4,47 @@
 #include "process.h"
 #include "queue.h"
 #include "utils.h"
+
 #define RAM_SIZE 2048
 
 int main() {
+    // Ensure input file exists
     createInputFileIfNotExists("input.txt");
 
+    // Open input file for reading
     FILE *input_file = fopen("input.txt", "r");
     if (input_file == NULL) {
         printf("Error opening input file\n");
         return 1;
     }
 
+    // Initialize queues for different priorities and RAM availability
     Queue priority1_queue, priority2_queue, priority3_queue;
     initQueue(&priority1_queue);
     initQueue(&priority2_queue);
     initQueue(&priority3_queue);
-
     int ram_available = RAM_SIZE;
 
+    // Arrays to store process names in each priority queue
     char queue1_names[MAX_PROCESSES][10] = {0};
     char queue2_names[MAX_PROCESSES][10] = {0};
     char queue3_names[MAX_PROCESSES][10] = {0};
-
     int queue1_count = 0, queue2_count = 0, queue3_count = 0;
 
+    // Read lines from input file
     char line[100];
     while (fgets(line, sizeof(line), input_file)) {
+        // Allocate memory for a new process
         Process *p = malloc(sizeof(Process));
         sscanf(line, "%[^,],%d,%d,%d,%d,%d", p->name, &p->arrival_time, &p->priority, &p->burst_time, &p->ram_required, &p->cpu_percentage);
         p->remaining_time = p->burst_time;
 
+        // Allocate RAM for priority 0 processes
         if (p->priority == 0) {
             allocateRAM(p, &ram_available);
         }
 
+        // Execute or enqueue processes based on priority
         if (p->priority == 0) {
             printf("Process %s queued to be assigned to CPU-1\n", p->name);
             printf("Process %s assigned to CPU-1\n", p->name);
@@ -60,6 +67,7 @@ int main() {
         }
     }
 
+    // Print queued processes for each CPU
     printf("CPU-1 que1(priority-0) (FCFS)→");
     for (int i = 0; i < queue1_count; i++) {
         printf("%s-", queue1_names[i]);
@@ -78,6 +86,7 @@ int main() {
     }
     printf("\n");
 
+    // Close input file
     fclose(input_file);
 
     return 0;

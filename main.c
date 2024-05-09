@@ -4,6 +4,7 @@
 #include "process.h"
 #include "queue.h"
 #include "utils.h"
+
 #define RAM_SIZE 2048
 
 int main() {
@@ -31,7 +32,8 @@ int main() {
     char line[100];
     while (fgets(line, sizeof(line), input_file)) {
         Process *p = malloc(sizeof(Process));
-        sscanf(line, "%[^,],%d,%d,%d,%d,%d", p->name, &p->arrival_time, &p->priority, &p->burst_time, &p->ram_required, &p->cpu_percentage);
+        sscanf(line, "%[^,],%d,%d,%d,%d,%d", p->name, &p->arrival_time, &p->priority, &p->burst_time, &p->ram_required,
+               &p->cpu_percentage);
         p->remaining_time = p->burst_time;
 
         if (p->priority == 0) {

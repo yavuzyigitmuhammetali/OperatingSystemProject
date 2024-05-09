@@ -4,7 +4,6 @@
 #include "process.h"
 #include "queue.h"
 #include "utils.h"
-//test
 #define RAM_SIZE 2048
 
 int main() {

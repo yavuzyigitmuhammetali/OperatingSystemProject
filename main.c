@@ -27,7 +27,7 @@ int main() {
     char queue3_names[MAX_PROCESSES][10] = {0};
 
     int queue1_count = 0, queue2_count = 0, queue3_count = 0;
-
+//
     char line[100];
     while (fgets(line, sizeof(line), input_file)) {
         Process *p = malloc(sizeof(Process));

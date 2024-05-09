@@ -3,4 +3,4 @@ project(OperatingSystemProject C)
 
 set(CMAKE_C_STANDARD 23)
 
-add_executable(OperatingSystemProject main.c)
+add_executable(untitled main.c queue.c utils.c)

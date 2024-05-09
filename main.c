@@ -36,7 +36,8 @@ int main() {
     while (fgets(line, sizeof(line), input_file)) {
         // Allocate memory for a new process
         Process *p = malloc(sizeof(Process));
-        sscanf(line, "%[^,],%d,%d,%d,%d,%d", p->name, &p->arrival_time, &p->priority, &p->burst_time, &p->ram_required, &p->cpu_percentage);
+        sscanf(line, "%[^,],%d,%d,%d,%d,%d", p->name, &p->arrival_time, &p->priority, &p->burst_time, &p->ram_required,
+               &p->cpu_percentage);
         p->remaining_time = p->burst_time;
 
         // Allocate RAM for priority 0 processes

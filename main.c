@@ -14,7 +14,7 @@ int main() {
         printf("Error opening input file\n");
         return 1;
     }
-//
+
     Queue priority1_queue, priority2_queue, priority3_queue;
     initQueue(&priority1_queue);
     initQueue(&priority2_queue);

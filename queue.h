@@ -3,21 +3,16 @@
 
 #include "process.h"
 
-#define MAX_PROCESSES 100
-
-// Define queue structure
 typedef struct {
-    Process *arr[MAX_PROCESSES];
-    int front, rear;
+    Process *processes[MAX_PROCESSES];
+    int front;
+    int rear;
+    int size;
 } Queue;
 
-//test
 void initQueue(Queue *q);
-
-int isEmpty(Queue *q);
-
 void enqueue(Queue *q, Process *p);
+Process* dequeue(Queue *q);
+int isQueueEmpty(Queue *q);
 
-Process *dequeue(Queue *q);
-
-#endif //QUEUE_H
+#endif

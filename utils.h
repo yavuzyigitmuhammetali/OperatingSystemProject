@@ -3,10 +3,8 @@
 
 #include "process.h"
 
-void allocateRAM(Process *p, int *ram_available);
-
-void executeProcess(Process *p, int quantum_time);
-
 void createInputFileIfNotExists(const char *filename);
+void allocateRAM(Process *p, int *ram_available);
+void executeProcess(Process *p, int quantum);
 
-#endif //UTILS_H
+#endif
